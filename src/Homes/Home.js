@@ -17,11 +17,20 @@ export default class Home extends React.Component {
 
  
   handleIsActive = e => {
+    let _this = this;  
     let home_wrappers = document.getElementsByClassName('home_item');
+    let markWrappers = document.getElementsByClassName('marker_item');
+    for (var i = 0; i < markWrappers.length; i++) {
+      markWrappers[i].classList.remove('active');
+    }   
+    let marker_item = document.getElementById(
+       "marker" + _this.props.items.id.toString()
+    );
+    marker_item.classList.add('active');
     for (var i = 0; i < home_wrappers.length; i++) {
       home_wrappers[i].classList.remove('active');
     }   
-    let _this = this;
+  
     e.preventDefault();
     _this.setState({
       isActive: !_this.state.isActive,

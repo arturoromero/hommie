@@ -159,17 +159,29 @@
 button.gm-ui-hover-effect {
   display: none !important;
 }
-.gm-style .gm-style-iw-c {
+.infoBox {
+  width: fit-content !important;
+  height: 34px;
+  overflow: hidden !important;
+  font-size: 13px;
+  padding: 0 !important;
+  & img{
+    display: none;
+  }
+}
+.marker_item {
   background-color: #8d7aff;
   border-radius: 2px;
-  padding: 13px 22px 6px;
   box-shadow: none;
   color: #ffffff;
   font-weight: 600;
+  box-shadow: 10px 10px 5px -8px rgba(0,0,0,0.51);
   span {
-    padding: 0px 11px 12px;
-    display: block;
-    margin-left: -19px;
+      display: block;
+      padding: 8px;
+  }
+  &.active {
+    background-color: #ff0364;
   }
 }
 

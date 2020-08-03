@@ -2,7 +2,7 @@
 import React from 'react';
 import {
   Marker,
-  InfoWindow,
+  InfoBox,
 } from '@react-google-maps/api';
 
 export default class Mark extends React.Component {
@@ -38,16 +38,15 @@ export default class Mark extends React.Component {
     let CurrencyFormat = require('react-currency-format');
     return (
       <Marker
-		onClick={_this.handleIsActive.bind(this)}
-		key={"map"+this.props.mark.id}
+        onClick={_this.handleIsActive.bind(this)}
         className={`${activeStatus ? 'active' : ''}`}
         position={{
           lat: this.props.mark.location.lat,
           lng: this.props.mark.location.lng,
         }}
       >
-        <InfoWindow>
-          <div>
+        <InfoBox>
+          <div id={"marker" + this.props.mark.id} className="marker_item">
             <CurrencyFormat
               value={this.props.mark.price}
               displayType={'text'}
@@ -55,7 +54,7 @@ export default class Mark extends React.Component {
               prefix={'$'}
             />
           </div>
-        </InfoWindow>
+        </InfoBox>
       </Marker>
     );
   }
