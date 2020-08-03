@@ -3,30 +3,12 @@ import { Col } from 'react-bootstrap';
 import {
   GoogleMap,
   LoadScript,
-  Marker,
-  InfoWindow,
 } from '@react-google-maps/api';
 import credentials from '../credentials';
-import Homes from '../Homes/Homes';
+import Mark from './Mark';
 
 
 export default class Map extends React.Component {
-
-	constructor (props) {
-		super(props);
-		this.state= {
-			isActive: false
-		}
-	};
-	
-	handleIsActive = () => {
-		this.setState({isActive: true});
-		console.log(this.state);
-	}
-
-	handleIsNotActive = () => {
-		this.setState({ isActive: false });
-	}
 
 	state = {
 		loading: true,
@@ -39,7 +21,7 @@ export default class Map extends React.Component {
     const data = await response.json();
     this.setState({ homes: data.homes, loading: false });
   }
-  render(onUnmount) {
+  render() {
     if (this.state.loading) {
       return <div>Cargando...</div>;
     }
@@ -47,7 +29,6 @@ export default class Map extends React.Component {
     if (!this.state.homes) {
       return <div>No se pudo cargar mapa.</div>;
     }
-    let CurrencyFormat = require('react-currency-format');
     return (
       <div>
         <Col>
@@ -61,26 +42,10 @@ export default class Map extends React.Component {
               zoom={12}
             >
               {this.state.homes.map(map => (
-                <Marker
-                  ref={this.textInput}
-                  onClick={()=> this.handleIsActive()}
-                  key={'home' + map.id.toString()}
-                  position={{
-                    lat: map.location.lat,
-                    lng: map.location.lng,
-                  }}
-                >
-                  <InfoWindow>
-                    <div>
-                      <CurrencyFormat
-                        value={map.price}
-                        displayType={'text'}
-                        thousandSeparator={true}
-                        prefix={'$'}
-                      />
-                    </div>
-                  </InfoWindow>
-                </Marker>
+                <Mark
+                  key={'mark' + map.id.toString()}
+                  mark={map}
+                />
               ))}
               <></>
             </GoogleMap>

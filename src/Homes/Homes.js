@@ -14,29 +14,13 @@ export default class Homes extends React.Component {
 		}
 	};
 	
-	handleIsActive = (e) => {
-		console.log(e);
-		 let _this = this;
-			e.preventDefault();
-			_this.setState({
-			isActive: !_this.state.isActive
-     });
-	
-	}
-
-	handleIsNotActive = () => {
-		this.setState({ isActive: false });
-	}
-
-
 	async componentDidMount() {
 		const url = 'https://us-central1-homie-front-test.cloudfunctions.net/homes';
 		const response = await fetch(url);
 		const data = await response.json();
 		this.setState({ homes: data.homes, loading: false });
 	}
-	render(onUnmount) {
-		let _this = this;
+	render() {
 		if (this.state.loading) {
 		return <div>Cargando...</div>;
 		}
@@ -49,7 +33,7 @@ export default class Homes extends React.Component {
         <Container>
           <Row>
             <Col>
-              <Container className="home_scrollable">
+              <Container id="scrollable" className="home_scrollable">
                 <Row>
                   {this.state.homes.map(home => (
                     <Home key={"home"+home.id} items={home} />

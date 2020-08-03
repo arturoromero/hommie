@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Col, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import BedroomImage from '../assets/images/icons/bedroom.png';
 import BathroomImage from '../assets/images/icons/bathrooms.png';
 import ParkingImage from '../assets/images/icons/parking.png';
@@ -17,23 +17,19 @@ export default class Home extends React.Component {
 
  
   handleIsActive = e => {
-    console.log(e);
+    let home_wrappers = document.getElementsByClassName('home_item');
+    for (var i = 0; i < home_wrappers.length; i++) {
+      home_wrappers[i].classList.remove('active');
+    }   
     let _this = this;
     e.preventDefault();
-    this.setState({
-      isActive: false,
-    });
     _this.setState({
       isActive: !_this.state.isActive,
     });
   };
 
-  handleIsNotActive = () => {
-    this.setState({ isActive: false });
-  };
 
-
-  render(props) {
+  render() {
     let CurrencyFormat = require('react-currency-format');
     let _this = this;
     let activeStatus = this.state.isActive;
@@ -42,7 +38,8 @@ export default class Home extends React.Component {
           md={6}
           key={'home' + this.props.items.id.toString()}
           onClick={_this.handleIsActive.bind(this)}
-          className={`${activeStatus ? 'active' : ''}`}
+          className={`home_item ${activeStatus ? 'active' : ''}`}
+          id={this.props.items.id.toString()}
         >
           <div className="home_wrapper">
             <Row>
