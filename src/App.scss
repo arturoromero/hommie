@@ -13,7 +13,9 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.min_width.col-md-6 {
+    min-width: 570px;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -28,7 +30,14 @@
 .App-link {
   color: #61dafb;
 }
-
+.app_container {
+  height: 100vh;
+  overflow: hidden;
+}
+.home_scrollable {
+  height: 100vh;
+  overflow-y: scroll;
+}
 .size-22 {
     width: 22%;
 }
@@ -43,16 +52,17 @@
 
 .photo_wrapper {
   height: 174px;
-  width: 270px;
+  width: 240px;
   background-size: cover;
 }
 
 .home_wrapper{
-  max-width: 270px;
+  max-width: 240px;
   background-color: #ffffff;  
   box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px 0px;
   margin: 1rem 0;
   padding: 0 15px;
+  min-width: 233px;
   cursor: pointer;
   &:hover {
      box-shadow: rgba(0, 0, 0, 0.6) 0px 2px 6px 0px;
@@ -75,9 +85,9 @@
 
 .exclusive_wrapper {
   position: absolute;
-  bottom: 96px;
+  bottom: 95px;
   text-align: center;
-  width: 270px;
+  width: 233px;
   color: white;
   background-color: rgba(255, 3, 100, 0.49);
   font-weight: 600;
@@ -98,15 +108,16 @@
 
 .feature {
   list-style: none;
-  margin: 5px 0 8px;
+  margin: 5px 6px 8px;
   padding: 0px 0 3px;
+  text-align: center;
   font-size: 14px;
   &_item {
     border-right: 1px solid #ccc;
     display: inline-block;
-    width: 67px;
+    width: 54px;
     height: 26px;
-    padding: 0 9px;
+    padding: 0 3px;
     &:last-child {
       border-right: 0;
     }
@@ -135,6 +146,31 @@
   margin-left: 10px;
   vertical-align: middle;
   display: inline-block!important;
+}
+/*Overwite map stuff*/
+button.gm-ui-hover-effect {
+  display: none !important;
+}
+.gm-style .gm-style-iw-c {
+  cursor: pointer;
+  background-color: #8d7aff;
+  border-radius: 2px;
+  padding: 13px 22px 6px;
+  box-shadow: none;
+  color: #ffffff;
+  font-weight: 600;
+  span {
+    padding: 0px 11px 12px;
+    display: block;
+    margin-left: -19px;
+  }
+}
+
+.gm-style .gm-style-iw-t::after {
+    background: #8d7aff;
+}
+.gm-style-iw-d {
+    display: contents;
 }
 
 
