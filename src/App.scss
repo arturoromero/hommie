@@ -123,6 +123,14 @@
     }
   }
 }
+.active {
+  & .home_wrapper {
+     border: #ff3482 2px solid;
+  }
+  & .exclusive_wrapper {
+      width: 231px;
+  }
+}
 
 /*Icons*/
 .icons {
@@ -152,7 +160,6 @@ button.gm-ui-hover-effect {
   display: none !important;
 }
 .gm-style .gm-style-iw-c {
-  cursor: pointer;
   background-color: #8d7aff;
   border-radius: 2px;
   padding: 13px 22px 6px;

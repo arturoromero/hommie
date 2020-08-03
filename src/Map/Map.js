@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Col } from 'react-bootstrap';
 import {
   GoogleMap,
@@ -6,18 +6,32 @@ import {
   Marker,
   InfoWindow,
 } from '@react-google-maps/api';
-import credentials from '../credentials'
-
-
+import credentials from '../credentials';
+import Homes from '../Homes/Homes';
 
 
 export default class Map extends React.Component {
 
-  state = {
-    loading: true,
-    homes: null,
-  };
+	constructor (props) {
+		super(props);
+		this.state= {
+			isActive: false
+		}
+	};
+	
+	handleIsActive = () => {
+		this.setState({isActive: true});
+		console.log(this.state);
+	}
 
+	handleIsNotActive = () => {
+		this.setState({ isActive: false });
+	}
+
+	state = {
+		loading: true,
+		homes: null,
+	};
 
   async componentDidMount() {
     const url = 'https://us-central1-homie-front-test.cloudfunctions.net/homes';
@@ -49,7 +63,7 @@ export default class Map extends React.Component {
               {this.state.homes.map(map => (
                 <Marker
                   ref={this.textInput}
-                  onClick={this.onClickMap}
+                  onClick={()=> this.handleIsActive()}
                   key={'home' + map.id.toString()}
                   position={{
                     lat: map.location.lat,
